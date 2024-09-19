@@ -66,3 +66,32 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+li {
+  list-style: none;
+  padding: 10px 30px;
+  background-image: url('popcorn_emoji.png');
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 75px;
+}
+
+li:hover {
+  font-size: 18px;
+  background-size: 80px;
+}
+
+.remove-btn {
+  border: 1px solid #646cff;
+  padding: 2px;
+  margin-left: 15px;
+  background: none;
+  border-radius: 50%;
+  font-size: .75rem;
+}
+
+.remove-btn:hover {
+  background: #646cff;
+  cursor: pointer;
+}
