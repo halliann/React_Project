@@ -3,14 +3,10 @@ import { useState } from 'react';
 function HomePage() {
     const [movieTitle, setMovieTitle] = useState('');
     const [watchlist, setWatchlist] = useState([]);
-    const [sampleList, setSampleList] = useState(['The Holiday', 'Twilight', 'Thor: Ragnorok'])
 
     function handleDelete(index) {
         const newWatchlist = watchlist.filter((_, i) => i != index);
         setWatchlist(newWatchlist);
-
-        const updateSampleList = sampleList.filter((_, i) => i != index);
-        setSampleList(updateSampleList);
     };
 
     return (
@@ -33,12 +29,6 @@ function HomePage() {
                 <button id="submit-btn">Add Movie</button>
             </form>
             <ul>
-                {/* sample movie list */}
-                {sampleList.map((movie, index) => (
-                    <li key={index}>{movie}<button onClick={() => handleDelete(index)} className="remove-btn">X</button></li>
-                ))}
-
-                {/* added movies */}
                 {watchlist.map((movie, index) => (
                     <li key={index}>{movie}<button onClick={() => handleDelete(index)} className="remove-btn">X</button></li>
                 ))}
