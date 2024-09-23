@@ -28,9 +28,9 @@ function HomePage() {
                 />
                 <button id="submit-btn">Add Movie</button>
             </form>
-            <ul>
+            <ul className="homepage-list">
                 {watchlist.map((movie, index) => (
-                    <li key={index}>{movie}<button onClick={() => handleDelete(index)} className="remove-btn">X</button></li>
+                    <li className="watchlist-list" key={index}>{movie}<button onClick={() => handleDelete(index)} className="remove-btn">X</button></li>
                 ))}
             </ul>
         </div>

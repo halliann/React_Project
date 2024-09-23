@@ -1,13 +1,15 @@
-import HomePage from './components/HomePage.jsx'
-import './App.css'
+import HomePage from './components/HomePage.jsx';
+import FilmsPage from './components/FilmsPage.jsx';
+import './App.css';
 
 function App() {
  
   return (
-    <>
-      <HomePage />
-    </>
+    <div>
+      {/* <HomePage /> */}
+      <FilmsPage />
+    </div>
   )
 }
 
-export default App
+export default App;

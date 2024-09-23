@@ -67,8 +67,8 @@ button:focus-visible {
   }
 }
 
-
-li {
+/* HomePage styling */
+.watchlist-list {
   list-style: none;
   padding: 10px 30px;
   background-image: url('popcorn_emoji.png');
@@ -94,4 +94,29 @@ li:hover {
 .remove-btn:hover {
   background: #646cff;
   cursor: pointer;
+}
+
+/* FilmsPage styling */
+.sg-list {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  list-style-type: none;
+}
+
+#sg-movie {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  background-color: #585858;
+}
+
+#sg-image {
+  height: 400px;
+  width: 300px;
+}
+
+@media only screen and (max-width: 480px) {
+  .sg-list {
+    grid-template-columns: auto;
+  }
 }
