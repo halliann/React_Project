@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
+import { filterFilmsByDirector, getListOf } from '../helpers/filmHelpers';
+
 
 function FilmsPage() {
     const [movieList, setMovieList] = useState([]);
     const [filteredMovies, setFilteredMovies] = useState([]);
+    const [searchDirector, setSearchDirector] = useState("");
 
     useEffect(() => {
        fetch('https://studioghibliapi-d6fc8.web.app/films')
@@ -18,7 +21,7 @@ function FilmsPage() {
         setFilteredMovies(filteredMovie);
     };
 
-    const searchDirector = (event) => {
+    const searchDirect = (event) => {
         const searchText = event.target.value.toLowerCase();
         const filteredDirector = movieList.filter((g) => 
         g.director.toLowerCase().startsWith(searchText));
@@ -40,9 +43,29 @@ function FilmsPage() {
         }
     };
 
+    const filmsByDirector = filterFilmsByDirector(movieList, searchDirector);
+    const directors = getListOf(movieList, "director");
+
     return (
         <div>
             <h1>Studio Ghibli Films</h1>
+            <form>
+                <div className="formGroup">
+                    <label htmlFor="select-director">Director:</label>
+                    <select 
+                        id="select-director" 
+                        value={searchDirector} 
+                        onChange={(e) => setSearchDirector(e.target.value)}>
+                        <option value="">All Directors</option>
+                        {directors.map((director) => {
+                            return (
+                            <option key={director} value={director}>{director}</option>
+                        );
+                        })}
+                    </select>
+                </div>
+            </form>
+
             {/* search bar for title, director, RT rating */}
             <nav>
                 <input 
@@ -55,7 +78,7 @@ function FilmsPage() {
                     id='director'
                     type='text'
                     placeholder='Director'
-                    onChange={searchDirector}
+                    onChange={searchDirect}
                 />
                 <select id='rating' placeholder='rating' onChange={searchRating}>
                     <option value="">🍅</option>
@@ -69,7 +92,7 @@ function FilmsPage() {
 
             {/* list of movies */}
             <ul className='sg-list'>
-                {filteredMovies.map((movie) => (
+                {filmsByDirector.map((movie) => (
                     <li key={movie.id} id="sg-movie">
                         <img src={movie.image} id="sg-image"></img>
                         <span className="movie-details">{movie.title} - </span>
